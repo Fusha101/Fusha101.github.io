@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FUSHA | فُسحة — Join the Beta</title>
+<meta name="description" content="Discover beautiful places across Saudi Arabia. Join the FUSHA beta waitlist.">
+<meta property="og:title" content="FUSHA | فُسحة — Join the Beta">
+<meta property="og:description" content="Discover. Explore. Connect. Join the waitlist to try FUSHA before the public launch.">
+<meta property="og:image" content="https://fusha101.github.io/logo.png">
+<meta name="theme-color" content="#153C31">
+<link rel="icon" href="logo.png">
+<style>
+  :root { --deep:#153C31; --card:#203D33; --gold:#E0C392; --gold-ink:#E8C98E; --cream:#F7F7F0; --ink:#213D31; --muted:#6F8276; --line:#E3E9DF; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { background: var(--cream); color: var(--ink); font: 16px/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Tahoma, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+  .page { max-width: 760px; margin: 0 auto; padding: 16px 16px 40px; }
+  .top { display: flex; justify-content: flex-end; margin-bottom: 12px; }
+  .lang { background: #fff; border: 1px solid var(--line); color: var(--deep); border-radius: 30px; padding: 6px 14px; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer; }
+
+  .hero { background: var(--card); color: #fff; border-radius: 26px; padding: 34px 24px 26px; text-align: center; }
+  .hero img { width: 44px; height: 54px; object-fit: contain; display: block; margin: 0 auto; }
+  .brand { font-size: 34px; font-weight: 800; margin: 12px 0 6px; letter-spacing: -.01em; }
+  .tagline { color: var(--gold-ink); font-size: 19px; margin: 0 0 18px; }
+  h1 { font-size: 26px; line-height: 1.3; margin: 0 0 12px; font-weight: 800; }
+  .lead { color: #EDF2EC; font-size: 17px; margin: 0 auto 22px; max-width: 620px; }
+
+  form { margin: 0; }
+  .fields { background: #fff; border-radius: 18px; overflow: hidden; text-align: start; }
+  .field { display: flex; align-items: center; gap: 12px; padding: 0 20px; }
+  .field + .field { border-top: 1px solid #E8ECE6; margin: 0 20px; padding: 0; }
+  .field svg { flex: none; color: #3A4F44; }
+  .field input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; font: inherit; font-size: 17px; color: var(--ink); padding: 20px 0; }
+  .field input::placeholder { color: #6A746E; }
+  .fields:focus-within { box-shadow: 0 0 0 3px rgba(224,195,146,.55); }
+  .hp { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+  form { position: relative; }
+  button.join { width: 100%; margin-top: 16px; border: 0; border-radius: 18px; background: var(--gold); color: var(--deep); font: inherit; font-size: 19px; font-weight: 700; padding: 18px; cursor: pointer; transition: filter .15s; }
+  button.join:hover { filter: brightness(1.05); }
+  button.join:disabled { opacity: .7; cursor: wait; }
+  .fine { color: #D3DDD5; font-size: 14px; margin: 14px 0 0; }
+  .fine a { color: var(--gold-ink); }
+  .msg { margin-top: 14px; border-radius: 14px; padding: 12px 14px; font-size: 15px; display: none; }
+  .msg.ok { display: block; background: #E6F1E6; color: #1E5A3A; }
+  .msg.err { display: block; background: #FBE9E4; color: #8A3A26; }
+
+  .done { padding: 10px 0 4px; }
+  .done .tick { width: 58px; height: 58px; border-radius: 50%; background: var(--gold); color: var(--deep); display: grid; place-items: center; margin: 0 auto 12px; font-size: 28px; font-weight: 900; }
+  .done h2 { margin: 0 0 6px; font-size: 22px; }
+  .done p { margin: 0; color: #DCE5DE; }
+
+  .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 18px; }
+  .feature { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 16px; }
+  .feature .ic { font-size: 22px; }
+  .feature b { display: block; margin: 6px 0 2px; font-size: 15px; }
+  .feature span { color: var(--muted); font-size: 14px; line-height: 1.5; }
+  footer { color: var(--muted); font-size: 13px; text-align: center; margin-top: 26px; }
+  footer a { color: var(--deep); }
+
+  [dir="rtl"] body, [dir="rtl"] .field input { font-family: -apple-system, "SF Arabic", "Geeza Pro", Tahoma, Arial, sans-serif; }
+  @media (max-width: 620px) {
+    .hero { padding: 28px 18px 22px; border-radius: 22px; }
+    .brand { font-size: 28px; }
+    h1 { font-size: 22px; }
+    .lead { font-size: 15.5px; }
+    .features { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="top"><button class="lang" id="lang" type="button">العربية</button></div>
+
+  <section class="hero">
+    <img src="logo.png" alt="FUSHA Explorer Pin">
+    <div class="brand">فُسحة | FUSHA</div>
+    <p class="tagline" data-en="Discover. Explore. Connect." data-ar="اكتشف. استكشف. تواصل."></p>
+    <h1 data-en="Your next adventure starts here." data-ar="مغامرتك الجاية تبدأ من هنا."></h1>
+    <p class="lead" data-en="Discover beautiful places across Saudi Arabia. Join the waitlist for a chance to try FUSHA before the public launch." data-ar="اكتشف أجمل الأماكن في السعودية. سجّل في قائمة الانتظار لفرصة تجربة فُسحة قبل الإطلاق الرسمي."></p>
+
+    <form id="form" novalidate>
+      <div class="fields">
+        <label class="field">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required maxlength="254" data-ph-en="Your email address" data-ph-ar="بريدك الإلكتروني">
+        </label>
+        <label class="field">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <input id="city" name="city" type="text" autocomplete="address-level2" maxlength="80" data-ph-en="Your city (optional)" data-ph-ar="مدينتك (اختياري)">
+        </label>
+      </div>
+      <div class="hp" aria-hidden="true"><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
+      <button class="join" id="submit" type="submit" data-en="Join the Beta Waitlist" data-ar="انضم لقائمة التجربة"></button>
+      <div class="msg" id="msg" role="status" aria-live="polite"></div>
+    </form>
+
+    <p class="fine"><span data-en="Early access invitations will depend on beta availability." data-ar="دعوات التجربة المبكرة حسب المقاعد المتاحة."></span>
+      <br><span data-en="We only use your email to invite you to the beta." data-ar="نستخدم بريدك فقط لدعوتك للتجربة."></span>
+      <a href="https://fusha101.github.io/fusha-legal/privacy.html" data-en="Privacy" data-ar="الخصوصية"></a></p>
+  </section>
+
+  <div class="features">
+    <div class="feature"><div class="ic">🏜️</div><b data-en="Verified places" data-ar="أماكن موثقة"></b><span data-en="Access info, restrictions and safety notes before you go." data-ar="معلومات الوصول والقيود والسلامة قبل ما تطلع."></span></div>
+    <div class="feature"><div class="ic">🧭</div><b data-en="Smart trip plans" data-ar="خطط رحلات ذكية"></b><span data-en="Matches to your style, with a packing checklist." data-ar="ترشيحات تناسب أسلوبك مع قائمة تجهيزات."></span></div>
+    <div class="feature"><div class="ic">👥</div><b data-en="Trip groups" data-ar="رحلات جماعية"></b><span data-en="Vote on places, share the checklist and split costs." data-ar="صوّتوا على المكان وتقاسموا التجهيزات والمصاريف."></span></div>
+  </div>
+
+  <footer>© 2026 FUSHA · <a href="https://fusha101.github.io/fusha-legal/" data-en="Support" data-ar="الدعم"></a> · <a href="https://fusha101.github.io/fusha-legal/privacy.html" data-en="Privacy" data-ar="الخصوصية"></a></footer>
+</div>
+
+<script>
+(function () {
+  // Public, browser-safe key (Supabase "publishable" key). The table only allows adding emails, never reading them.
+  var SUPABASE_URL = 'https://hdamabirkrctwydvmwmh.supabase.co';
+  var SUPABASE_KEY = 'sb_publishable_Qi5FgGCaExyGCwG6bfpL9A_e7oShtCe';
+
+  var T = {
+    en: { bad: 'Please enter a valid email address.', fail: 'Something went wrong. Please try again in a moment.', sending: 'Joining…',
+          doneTitle: "You're on the list!", doneBody: "We'll email you when your beta invite is ready.", dupTitle: "You're already on the list", dupBody: "We'll be in touch when the beta opens." },
+    ar: { bad: 'اكتب بريد إلكتروني صحيح.', fail: 'صار خطأ، حاول بعد شوي.', sending: 'جارٍ التسجيل…',
+          doneTitle: 'تم تسجيلك!', doneBody: 'بنراسلك على بريدك أول ما تجهز دعوة التجربة.', dupTitle: 'أنت مسجّل من قبل', dupBody: 'بنتواصل معك أول ما تفتح التجربة.' }
+  };
+  var lang = 'en';
+  try { lang = localStorage.getItem('fusha-lang') || ''; } catch (e) {}
+  if (lang !== 'ar' && lang !== 'en') lang = /^ar/i.test(navigator.language || '') ? 'ar' : 'en';
+
+  function apply() {
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.querySelectorAll('[data-' + lang + ']').forEach(function (el) { el.textContent = el.getAttribute('data-' + lang); });
+    document.querySelectorAll('[data-ph-' + lang + ']').forEach(function (el) { el.placeholder = el.getAttribute('data-ph-' + lang); });
+    document.getElementById('lang').textContent = lang === 'ar' ? 'English' : 'العربية';
+    document.title = lang === 'ar' ? 'فُسحة | FUSHA — انضم للتجربة' : 'FUSHA | فُسحة — Join the Beta';
+  }
+  document.getElementById('lang').addEventListener('click', function () {
+    lang = lang === 'ar' ? 'en' : 'ar';
+    try { localStorage.setItem('fusha-lang', lang); } catch (e) {}
+    apply();
+  });
+  apply();
+
+  var form = document.getElementById('form'), msg = document.getElementById('msg'), btn = document.getElementById('submit');
+  function show(kind, text) { msg.className = 'msg ' + kind; msg.textContent = text; }
+  function finish(title, body) {
+    form.innerHTML = '<div class="done"><div class="tick">✓</div><h2></h2><p></p></div>';
+    form.querySelector('h2').textContent = title;
+    form.querySelector('p').textContent = body;
+  }
+
+  var source = (new URLSearchParams(location.search).get('ref') || '').replace(/[^\w.-]/g, '').slice(0, 60) || null;
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var t = T[lang];
+    var email = document.getElementById('email').value.trim().toLowerCase();
+    var city = document.getElementById('city').value.trim().slice(0, 80) || null;
+    if (document.getElementById('website').value) { finish(t.doneTitle, t.doneBody); return; } // bot trap
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || email.length > 254) { show('err', t.bad); return; }
+    btn.disabled = true; btn.textContent = t.sending; msg.className = 'msg';
+    fetch(SUPABASE_URL + '/rest/v1/beta_waitlist', {
+      method: 'POST',
+      headers: { apikey: SUPABASE_KEY, Authorization: 'Bearer ' + SUPABASE_KEY, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
+      body: JSON.stringify({ email: email, city: city, lang: lang, source: source })
+    }).then(function (r) {
+      if (r.status === 201) finish(t.doneTitle, t.doneBody);
+      else if (r.status === 409) finish(t.dupTitle, t.dupBody);
+      else throw new Error('HTTP ' + r.status);
+    }).catch(function () {
+      btn.disabled = false; btn.textContent = btn.getAttribute('data-' + lang); show('err', t.fail);
+    });
+  });
+})();
+</script>
+</body>
+</html>
