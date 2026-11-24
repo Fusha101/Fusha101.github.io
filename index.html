@@ -1,178 +1,230 @@
 <!doctype html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FUSHA | فُسحة — Join the Beta</title>
-<meta name="description" content="Discover beautiful places across Saudi Arabia. Join the FUSHA beta waitlist.">
-<meta property="og:title" content="FUSHA | فُسحة — Join the Beta">
-<meta property="og:description" content="Discover. Explore. Connect. Join the waitlist to try FUSHA before the public launch.">
+<title>FUSHA | فسحة — طلعتك الجاية بانتظارك</title>
+<meta name="description" content="فسحة تطبيق سعودي يساعدك تكتشف أماكن الطلعات والرحلات وتخطط لها وتشارك لحظاتك. FUSHA is a Saudi outdoor app to discover places, plan outings and meet fellow explorers.">
+<meta property="og:title" content="FUSHA | فسحة">
+<meta property="og:description" content="اكتشف أجمل أماكن الطلعات في السعودية · Discover the best outdoor places across Saudi Arabia.">
 <meta property="og:image" content="https://gofusha.com/logo.png">
 <meta name="theme-color" content="#6B5038">
 <link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=IBM+Plex+Sans+Arabic:wght@400;700&family=Noto+Naskh+Arabic:wght@700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 <style>
-  :root { --deep:#3A2816; --card:#5A422D; --gold:#F3DDB0; --gold-ink:#F3DDB0; --cream:#6B5038; --ink:#FBF4E8; --muted:#C9B293; --line:#7D6046; }
+  :root { --page:#6B5038; --surface:#7D6046; --deep:#5A422D; --deep2:#4A3524; --accent:#F3DDB0; --on:#3A2816; --text:#FBF4E8; --text2:#E6D3B8; --muted:#C9B293; --gold:#C9A15F; --line:rgba(243,221,176,.16); }
   * { box-sizing: border-box; }
   html, body { margin: 0; }
-  body { background: var(--cream); color: var(--ink); font: 16px/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Tahoma, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
-  .page { max-width: 760px; margin: 0 auto; padding: 16px 16px 40px; }
-  .top { display: flex; justify-content: flex-end; margin-bottom: 12px; }
-  .lang { background: #7D6046; border: 1px solid var(--line); color: #FBF4E8; border-radius: 30px; padding: 6px 14px; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer; }
+  body { background: var(--page); color: var(--text); font: 17px/1.7 'IBM Plex Sans Arabic', -apple-system, "Segoe UI", Tahoma, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: var(--accent); }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+  .logo { font-family: 'Aref Ruqaa', serif; font-weight: 700; color: var(--accent); line-height: 1.2; }
+  h1, h2, h3 { font-family: 'Playfair Display', 'Noto Naskh Arabic', Georgia, serif; font-weight: 700; margin: 0; line-height: 1.25; }
+  [hidden] { display: none !important; }
 
-  .hero { background: var(--card); color: #fff; border-radius: 26px; padding: 34px 24px 26px; text-align: center; }
-  .hero .logo { display: block; font-family: 'Aref Ruqaa', serif; font-weight: 700; font-size: 64px; line-height: 1.25; color: #F6E7C8; }
-  .brand { font-size: 13px; font-weight: 700; margin: 0 0 8px; letter-spacing: .32em; color: #E6D3B8; }
-  .tagline { color: var(--gold-ink); font-size: 19px; margin: 0 0 18px; }
-  h1 { font-family: 'Playfair Display', Georgia, serif; font-size: 30px; line-height: 1.25; margin: 0 0 12px; font-weight: 500; }
-  .lead { color: #E6D3B8; font-size: 17px; margin: 0 auto 22px; max-width: 620px; }
+  /* top bar */
+  .top { position: sticky; top: 0; z-index: 5; background: rgba(74,53,36,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 66px; }
+  .top .logo { font-size: 34px; text-decoration: none; }
+  .links { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .links a.nav { color: var(--text2); text-decoration: none; padding: 6px 10px; border-radius: 10px; font-size: 15px; }
+  .links a.nav:hover { color: var(--text); background: rgba(243,221,176,.08); }
+  .btn { display: inline-flex; align-items: center; gap: 6px; border: 0; border-radius: 24px; padding: 9px 18px; background: var(--accent); color: var(--on); font: 700 15px/1.2 'IBM Plex Sans Arabic', sans-serif; text-decoration: none; cursor: pointer; white-space: nowrap; }
+  .btn.ghost { background: transparent; color: var(--text); border: 1px solid var(--line); }
+  .btn.ghost:hover { background: rgba(243,221,176,.08); }
+  .lang { background: var(--deep); color: var(--text); border: 1px solid var(--line); border-radius: 20px; padding: 7px 13px; font: 700 14px 'IBM Plex Sans Arabic', sans-serif; cursor: pointer; }
 
-  form { margin: 0; }
-  .fields { background: #FBF4E8; border-radius: 18px; overflow: hidden; text-align: start; }
-  .field { display: flex; align-items: center; gap: 12px; padding: 0 20px; }
-  .field + .field { border-top: 1px solid #E8DCC8; margin: 0 20px; padding: 0; }
-  .field svg { flex: none; color: #6B5038; }
-  .field input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; font: inherit; font-size: 17px; color: #3A2816; padding: 20px 0; }
-  .field input::placeholder { color: #8C7458; }
-  .fields:focus-within { box-shadow: 0 0 0 3px rgba(224,195,146,.55); }
-  .hp { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
-  form { position: relative; }
-  button.join { width: 100%; margin-top: 16px; border: 0; border-radius: 18px; background: var(--gold); color: var(--deep); font: inherit; font-size: 19px; font-weight: 700; padding: 18px; cursor: pointer; transition: filter .15s; }
-  button.join:hover { filter: brightness(1.05); }
-  button.join:disabled { opacity: .7; cursor: wait; }
-  .fine { color: #E6D3B8; font-size: 14px; margin: 14px 0 0; }
-  .fine a { color: var(--gold-ink); }
-  .msg { margin-top: 14px; border-radius: 14px; padding: 12px 14px; font-size: 15px; display: none; }
-  .msg.ok { display: block; background: #F3DDB0; color: #3A2816; }
-  .msg.err { display: block; background: #FBE9E4; color: #8A3A26; }
+  /* hero */
+  .hero { position: relative; min-height: min(78vh, 720px); display: flex; align-items: flex-end; background: linear-gradient(180deg, rgba(20,14,8,.15), rgba(107,80,56,.98) 92%), url('img/hero.jpg') center/cover; }
+  .hero .wrap { width: 100%; padding-bottom: 54px; padding-top: 120px; }
+  .eyebrow { color: var(--accent); font-weight: 700; letter-spacing: .14em; font-size: 13px; }
+  [lang=ar] .eyebrow { letter-spacing: 0; font-size: 15px; }
+  .hero h1 { font-size: clamp(40px, 6.5vw, 72px); margin-top: 8px; max-width: 14ch; }
+  .hero p { font-size: 19px; color: var(--text2); max-width: 46ch; margin: 14px 0 22px; }
+  .stores { display: flex; gap: 10px; flex-wrap: wrap; }
+  .soon { display: inline-flex; align-items: center; gap: 8px; background: rgba(58,40,22,.6); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; color: var(--text); font-weight: 700; font-size: 15px; }
+  .soon small { display: block; color: var(--muted); font-weight: 400; font-size: 12px; }
 
-  .done { padding: 10px 0 4px; }
-  .done .tick { width: 58px; height: 58px; border-radius: 50%; background: var(--gold); color: var(--deep); display: grid; place-items: center; margin: 0 auto 12px; font-size: 28px; font-weight: 900; }
-  .done h2 { margin: 0 0 6px; font-size: 22px; }
-  .done p { margin: 0; color: #E6D3B8; }
+  /* sections */
+  section { padding: 70px 0; }
+  .lead { color: var(--text2); max-width: 60ch; margin: 10px 0 0; }
+  .sec-title { font-size: clamp(28px, 4vw, 40px); }
+  .about { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: center; }
+  .about img { width: 100%; max-width: 440px; justify-self: center; filter: drop-shadow(0 18px 30px rgba(0,0,0,.35)); }
+  .grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 28px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: 20px; }
+  .card .ic { font-size: 28px; }
+  .card h3 { font-size: 19px; margin: 10px 0 6px; }
+  .card p { color: var(--text2); font-size: 15px; margin: 0; }
+  .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 26px; }
+  .step { background: var(--deep); border-radius: 22px; padding: 22px; }
+  .step b { display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 17px; background: var(--gold); color: var(--on); font-weight: 900; }
+  .step h3 { font-size: 19px; margin: 12px 0 6px; }
+  .step p { margin: 0; color: var(--text2); font-size: 15px; }
+  .shops { background: var(--deep2); }
+  .shops .box { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .shops ul { margin: 14px 0 0; padding-inline-start: 20px; color: var(--text2); }
+  .portals { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 26px; }
+  .portal { display: flex; justify-content: space-between; align-items: center; gap: 12px; text-decoration: none; color: var(--text); }
+  .portal div span { color: var(--text2); font-size: 15px; display: block; }
+  .portal .btn { color: var(--on); } .portal .btn.ghost { color: var(--text); }
+  .note { color: var(--muted); font-size: 14px; margin-top: 26px; }
 
-  .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 18px; }
-  .feature { background: #7D6046; border: 1px solid var(--line); border-radius: 18px; padding: 16px; }
-  .feature .ic { font-size: 22px; }
-  .feature b { display: block; margin: 6px 0 2px; font-size: 15px; }
-  .feature span { color: var(--muted); font-size: 14px; line-height: 1.5; }
-  footer { color: var(--muted); font-size: 13px; text-align: center; margin-top: 26px; }
-  footer a { color: var(--gold); }
+  footer { border-top: 1px solid var(--line); padding: 30px 0 46px; color: var(--muted); font-size: 14px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: center; }
+  footer a { color: var(--text2); text-decoration: none; margin-inline-end: 14px; }
+  footer .logo { font-size: 28px; }
 
-  [dir="rtl"] body, [dir="rtl"] .field input { font-family: -apple-system, "SF Arabic", "Geeza Pro", Tahoma, Arial, sans-serif; }
-  @media (max-width: 620px) {
-    .hero { padding: 28px 18px 22px; border-radius: 22px; }
-    .brand { font-size: 28px; }
-    h1 { font-size: 22px; }
-    .lead { font-size: 15.5px; }
-    .features { grid-template-columns: 1fr; }
+  @media (max-width: 900px) {
+    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .about { grid-template-columns: 1fr; }
+    .steps, .portals { grid-template-columns: 1fr; }
+    .links a.nav { display: none; }
+  }
+  @media (max-width: 520px) {
+    .grid { grid-template-columns: 1fr; }
+    .top .btn.ghost { display: none; }
   }
 </style>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="page">
-  <div class="top"><button class="lang" id="lang" type="button">العربية</button></div>
-
-  <section class="hero">
-    <span class="logo" aria-label="FUSHA logo">فسحة</span>
-    <div class="brand">FUSHA</div>
-    <p class="tagline" data-en="Discover. Explore. Connect." data-ar="اكتشف. استكشف. تواصل."></p>
-    <h1 data-en="Your next adventure starts here." data-ar="مغامرتك الجاية تبدأ من هنا."></h1>
-    <p class="lead" data-en="Discover beautiful places across Saudi Arabia. Join the waitlist for a chance to try FUSHA before the public launch." data-ar="اكتشف أجمل الأماكن في السعودية. سجّل في قائمة الانتظار لفرصة تجربة فُسحة قبل الإطلاق الرسمي."></p>
-
-    <form id="form" novalidate>
-      <div class="fields">
-        <label class="field">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-          <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required maxlength="254" data-ph-en="Your email address" data-ph-ar="بريدك الإلكتروني">
-        </label>
-        <label class="field">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
-          <input id="city" name="city" type="text" autocomplete="address-level2" maxlength="80" data-ph-en="Your city (optional)" data-ph-ar="مدينتك (اختياري)">
-        </label>
-      </div>
-      <div class="hp" aria-hidden="true"><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
-      <button class="join" id="submit" type="submit" data-en="Join the Beta Waitlist" data-ar="انضم لقائمة التجربة"></button>
-      <div class="msg" id="msg" role="status" aria-live="polite"></div>
-    </form>
-
-    <p class="fine"><span data-en="Early access invitations will depend on beta availability." data-ar="دعوات التجربة المبكرة حسب المقاعد المتاحة."></span>
-      <br><span data-en="We only use your email to invite you to the beta." data-ar="نستخدم بريدك فقط لدعوتك للتجربة."></span>
-      <a href="https://gofusha.com/legal/privacy.html" data-en="Privacy" data-ar="الخصوصية"></a></p>
-  </section>
-
-  <div class="features">
-    <div class="feature"><div class="ic">🏜️</div><b data-en="Verified places" data-ar="أماكن موثقة"></b><span data-en="Access info, restrictions and safety notes before you go." data-ar="معلومات الوصول والقيود والسلامة قبل ما تطلع."></span></div>
-    <div class="feature"><div class="ic">🧭</div><b data-en="Smart trip plans" data-ar="خطط رحلات ذكية"></b><span data-en="Matches to your style, with a packing checklist." data-ar="ترشيحات تناسب أسلوبك مع قائمة تجهيزات."></span></div>
-    <div class="feature"><div class="ic">👥</div><b data-en="Trip groups" data-ar="رحلات جماعية"></b><span data-en="Vote on places, share the checklist and split costs." data-ar="صوّتوا على المكان وتقاسموا التجهيزات والمصاريف."></span></div>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#" aria-label="FUSHA">فسحة</a>
+    <nav class="links" aria-label="Main">
+      <a class="nav" href="#about" data-t="nav_about">عن فسحة</a>
+      <a class="nav" href="#features" data-t="nav_features">المزايا</a>
+      <a class="nav" href="#shops" data-t="nav_shops">للمتاجر</a>
+      <a class="btn ghost" href="/seller/" data-t="seller_btn">بوابة البائعين</a>
+      <a class="btn ghost" href="/admin/" data-t="admin_btn">لوحة الإدارة</a>
+      <button class="lang" id="lang" type="button">English</button>
+    </nav>
   </div>
+</header>
 
-  <footer>© 2026 FUSHA · <a href="https://gofusha.com/legal/" data-en="Support" data-ar="الدعم"></a> · <a href="https://gofusha.com/legal/privacy.html" data-en="Privacy" data-ar="الخصوصية"></a></footer>
-</div>
+<section class="hero" style="padding:0">
+  <div class="wrap">
+    <div class="eyebrow" data-t="eyebrow">تطبيق سعودي للطلعات والرحلات</div>
+    <h1 data-t="hero_title">طلعتك الجاية بانتظارك.</h1>
+    <p data-t="hero_text">فسحة يساعدك تكتشف أجمل أماكن الطلعات في السعودية، وتخطط لرحلتك، وتشارك لحظاتك مع المستكشفين.</p>
+    <div class="stores">
+      <span class="soon"> <span><small data-t="soon">قريباً على</small>App Store</span></span>
+      <span class="soon">▶ <span><small data-t="soon">قريباً على</small>Google Play</span></span>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about">
+    <div>
+      <h2 class="sec-title" data-t="about_title">وش هي فسحة؟</h2>
+      <p class="lead" data-t="about_p1">فسحة تطبيق يجمع لك كل اللي تحتاجه لطلعتك: أماكن مختارة وموثقة من البر للبحر للجبال، خريطة للمملكة، والطقس المباشر لكل مكان، ونوع السيارة المناسب ومستوى الصعوبة.</p>
+      <p class="lead" data-t="about_p2">وتقدر تخطط طلعتك مع أصدقائك، وتجهّز قائمتك، وتجمع أختام جوازك مع كل رحلة، وتطلب معداتك من متاجر الرحلات حولك — كله في مكان واحد، بالعربي والإنجليزي.</p>
+    </div>
+    <img src="img/saudi.png" alt="" loading="lazy">
+  </div>
+</section>
+
+<section id="features" style="padding-top:0">
+  <div class="wrap">
+    <h2 class="sec-title" data-t="feat_title">كل شي لطلعتك</h2>
+    <div class="grid">
+      <div class="card"><div class="ic">🗺️</div><h3 data-t="f1_t">أماكن مختارة</h3><p data-t="f1_p">أماكن في كل مناطق المملكة مع الصور والوصف والطقس المباشر ونوع السيارة.</p></div>
+      <div class="card"><div class="ic">✦</div><h3 data-t="f2_t">رشّح لي</h3><p data-t="f2_p">اختر طلعة سهلة أو مغامرة، ووقتك، وسيارتك — وفسحة يرشح لك المكان المناسب.</p></div>
+      <div class="card"><div class="ic">👥</div><h3 data-t="f3_t">المجتمع والمجموعات</h3><p data-t="f3_p">تابع المستكشفين، وشارك لحظاتك، ونظّم رحلاتك مع أصدقائك.</p></div>
+      <div class="card"><div class="ic">🛂</div><h3 data-t="f4_t">جواز فسحة</h3><p data-t="f4_p">كل رحلة تخلّصها تكسبك ختم في جوازك، واجمع الأوسمة.</p></div>
+      <div class="card"><div class="ic">🧭</div><h3 data-t="f5_t">تجارب بمرشدين</h3><p data-t="f5_p">جولات وطلعات جماعية ومراقبة نجوم مع منظمين مرخصين.</p></div>
+      <div class="card"><div class="ic">🛍️</div><h3 data-t="f6_t">متجر فسحة</h3><p data-t="f6_p">اطلب معدات التخييم والدفع الرباعي والتأجير من متاجر حولك — توصيل أو استلام.</p></div>
+      <div class="card"><div class="ic">💎</div><h3 data-t="f7_t">أماكن مميزة وجواهر</h3><p data-t="f7_p">شارك مكان ما يعرفه أحد، وإذا اعتمدناه تكسب جواهر تستخدمها كخصم.</p></div>
+      <div class="card"><div class="ic">🌙</div><h3 data-t="f8_t">عربي وإنجليزي</h3><p data-t="f8_p">التطبيق كامل باللغتين، مصمم للمستكشفين في السعودية.</p></div>
+    </div>
+
+    <div class="steps">
+      <div class="step"><b>1</b><h3 data-t="s1_t">اكتشف</h3><p data-t="s1_p">تصفح الأماكن أو خلّ فسحة يرشح لك حسب مزاجك.</p></div>
+      <div class="step"><b>2</b><h3 data-t="s2_t">خطط</h3><p data-t="s2_p">جهّز قائمتك، وادعُ أصدقائك، واطلب معداتك.</p></div>
+      <div class="step"><b>3</b><h3 data-t="s3_t">انطلق</h3><p data-t="s3_p">شغّل وضع الرحلة، واستمتع، واكسب ختم المكان.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="shops" class="shops">
+  <div class="wrap">
+    <div class="box">
+      <div>
+        <h2 class="sec-title" data-t="shops_title">عندك متجر رحلات؟</h2>
+        <p class="lead" data-t="shops_p">اعرض معداتك وإكسسوارات الدفع الرباعي والتأجير على متجر فسحة، ووصل للمستكشفين في مدينتك.</p>
+        <ul>
+          <li data-t="shops_l1">سجّل متجرك مجاناً وأضف منتجاتك وصورك وأسعارك.</li>
+          <li data-t="shops_l2">استقبل الطلبات وحدد التوصيل أو الاستلام من المتجر.</li>
+          <li data-t="shops_l3">فريق فسحة يراجع كل متجر قبل ظهوره.</li>
+        </ul>
+      </div>
+      <a class="btn" href="/seller/" data-t="shops_btn">سجّل متجرك</a>
+    </div>
+
+    <div class="portals">
+      <a class="card portal" href="/seller/"><div><h3 data-t="p_seller">بوابة البائعين</h3><span data-t="p_seller_s">للمتاجر: المنتجات والمخزون والطلبات</span></div><span class="btn" data-t="open">افتح</span></a>
+      <a class="card portal" href="/admin/"><div><h3 data-t="p_admin">لوحة الإدارة</h3><span data-t="p_admin_s">لفريق فسحة فقط</span></div><span class="btn ghost" data-t="open">افتح</span></a>
+    </div>
+    <p class="note" data-t="safety">تأكد دائماً من الوصول والتصاريح وسلامة الطريق وأنظمة التخييم قبل الذهاب.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><span class="logo">فسحة</span> <span>© 2026 FUSHA</span></div>
+    <div>
+      <a href="legal/terms.html" data-t="terms">الشروط</a>
+      <a href="legal/privacy.html" data-t="privacy">الخصوصية</a>
+      <a href="legal/delete-account.html" data-t="delete">حذف الحساب</a>
+      <a href="/seller/" data-t="seller_btn">بوابة البائعين</a>
+      <a href="/admin/" data-t="admin_btn">لوحة الإدارة</a>
+    </div>
+  </div>
+</footer>
 
 <script>
-(function () {
-  // Public, browser-safe key (Supabase "publishable" key). The table only allows adding emails, never reading them.
-  var SUPABASE_URL = 'https://hdamabirkrctwydvmwmh.supabase.co';
-  var SUPABASE_KEY = 'sb_publishable_Qi5FgGCaExyGCwG6bfpL9A_e7oShtCe';
-
-  var T = {
-    en: { bad: 'Please enter a valid email address.', fail: 'Something went wrong. Please try again in a moment.', sending: 'Joining…',
-          doneTitle: "You're on the list!", doneBody: "We'll email you when your beta invite is ready.", dupTitle: "You're already on the list", dupBody: "We'll be in touch when the beta opens." },
-    ar: { bad: 'اكتب بريد إلكتروني صحيح.', fail: 'صار خطأ، حاول بعد شوي.', sending: 'جارٍ التسجيل…',
-          doneTitle: 'تم تسجيلك!', doneBody: 'بنراسلك على بريدك أول ما تجهز دعوة التجربة.', dupTitle: 'أنت مسجّل من قبل', dupBody: 'بنتواصل معك أول ما تفتح التجربة.' }
+  const EN = {
+    nav_about: 'About', nav_features: 'Features', nav_shops: 'For shops', seller_btn: 'Seller portal', admin_btn: 'Admin',
+    eyebrow: 'A SAUDI OUTDOOR APP', hero_title: 'Your next escape is waiting.',
+    hero_text: 'FUSHA helps you discover the best outdoor places in Saudi Arabia, plan your outing, and share moments with fellow explorers.',
+    soon: 'Coming soon on',
+    about_title: 'What is FUSHA?',
+    about_p1: 'FUSHA brings together everything you need for an outing: hand-picked, reviewed places from desert to sea to mountains, a map of the Kingdom, live weather for every place, and the right car and difficulty level.',
+    about_p2: 'Plan trips with friends, get your packing list ready, collect passport stamps on every trip, and order gear from outdoor shops near you — all in one place, in Arabic and English.',
+    feat_title: 'Everything for your outing',
+    f1_t: 'Hand-picked places', f1_p: 'Places in every region of the Kingdom with photos, descriptions, live weather and car access.',
+    f2_t: 'Pick for me', f2_p: 'Choose an easy outing or an adventure, your time and your car — FUSHA suggests the right place.',
+    f3_t: 'Community & groups', f3_p: 'Follow explorers, share your moments and organise trips with friends.',
+    f4_t: 'FUSHA Passport', f4_p: 'Every trip you finish earns a stamp in your passport — collect badges as you go.',
+    f5_t: 'Guided experiences', f5_p: 'Tours, group outings and stargazing with licensed organisers.',
+    f6_t: 'FUSHA Store', f6_p: 'Order camping, 4×4 and rental gear from shops near you — delivery or pickup.',
+    f7_t: 'Hidden gems & Gems', f7_p: 'Share a place nobody knows — if we approve it, you earn gems to use as discounts.',
+    f8_t: 'Arabic & English', f8_p: 'The whole app in both languages, made for explorers in Saudi Arabia.',
+    s1_t: 'Discover', s1_p: 'Browse places or let FUSHA pick for your mood.',
+    s2_t: 'Plan', s2_p: 'Get your list ready, invite friends and order your gear.',
+    s3_t: 'Go', s3_p: 'Turn on Trip Mode, enjoy, and earn the place’s stamp.',
+    shops_title: 'Own an outdoor shop?', shops_p: 'Sell your gear, 4×4 accessories and rentals on the FUSHA Store and reach explorers in your city.',
+    shops_l1: 'Register your shop for free and add your products, photos and prices.', shops_l2: 'Receive orders and choose delivery, pickup from your shop, or both.', shops_l3: 'The FUSHA team reviews every shop before it goes live.',
+    shops_btn: 'Register your shop', p_seller: 'Seller portal', p_seller_s: 'For shops: products, stock and orders', p_admin: 'Admin portal', p_admin_s: 'For the FUSHA team only', open: 'Open',
+    safety: 'Always check access, permits, route safety and camping rules before you go.',
+    terms: 'Terms', privacy: 'Privacy', delete: 'Delete account',
   };
-  var lang = 'en';
-  try { lang = localStorage.getItem('fusha-lang') || ''; } catch (e) {}
-  if (lang !== 'ar' && lang !== 'en') lang = /^ar/i.test(navigator.language || '') ? 'ar' : 'en';
-
-  function apply() {
-    document.documentElement.lang = lang;
-    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-    document.querySelectorAll('[data-' + lang + ']').forEach(function (el) { el.textContent = el.getAttribute('data-' + lang); });
-    document.querySelectorAll('[data-ph-' + lang + ']').forEach(function (el) { el.placeholder = el.getAttribute('data-ph-' + lang); });
+  const AR = {};
+  document.querySelectorAll('[data-t]').forEach(el => { AR[el.dataset.t] = el.textContent; });
+  const apply = lang => {
+    const d = lang === 'ar' ? AR : EN;
+    document.documentElement.lang = lang; document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.querySelectorAll('[data-t]').forEach(el => { if (d[el.dataset.t]) el.textContent = d[el.dataset.t]; });
     document.getElementById('lang').textContent = lang === 'ar' ? 'English' : 'العربية';
-    document.title = lang === 'ar' ? 'فُسحة | FUSHA — انضم للتجربة' : 'FUSHA | فُسحة — Join the Beta';
-  }
-  document.getElementById('lang').addEventListener('click', function () {
-    lang = lang === 'ar' ? 'en' : 'ar';
+    document.title = lang === 'ar' ? 'FUSHA | فسحة — طلعتك الجاية بانتظارك' : 'FUSHA | فسحة — Your next escape is waiting';
     try { localStorage.setItem('fusha-lang', lang); } catch (e) {}
-    apply();
-  });
-  apply();
-
-  var form = document.getElementById('form'), msg = document.getElementById('msg'), btn = document.getElementById('submit');
-  function show(kind, text) { msg.className = 'msg ' + kind; msg.textContent = text; }
-  function finish(title, body) {
-    form.innerHTML = '<div class="done"><div class="tick">✓</div><h2></h2><p></p></div>';
-    form.querySelector('h2').textContent = title;
-    form.querySelector('p').textContent = body;
-  }
-
-  var source = (new URLSearchParams(location.search).get('ref') || '').replace(/[^\w.-]/g, '').slice(0, 60) || null;
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var t = T[lang];
-    var email = document.getElementById('email').value.trim().toLowerCase();
-    var city = document.getElementById('city').value.trim().slice(0, 80) || null;
-    if (document.getElementById('website').value) { finish(t.doneTitle, t.doneBody); return; } // bot trap
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || email.length > 254) { show('err', t.bad); return; }
-    btn.disabled = true; btn.textContent = t.sending; msg.className = 'msg';
-    fetch(SUPABASE_URL + '/rest/v1/beta_waitlist', {
-      method: 'POST',
-      headers: { apikey: SUPABASE_KEY, Authorization: 'Bearer ' + SUPABASE_KEY, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
-      body: JSON.stringify({ email: email, city: city, lang: lang, source: source })
-    }).then(function (r) {
-      if (r.status === 201) finish(t.doneTitle, t.doneBody);
-      else if (r.status === 409) finish(t.dupTitle, t.dupBody);
-      else throw new Error('HTTP ' + r.status);
-    }).catch(function () {
-      btn.disabled = false; btn.textContent = btn.getAttribute('data-' + lang); show('err', t.fail);
-    });
-  });
-})();
+  };
+  let lang = 'ar';
+  try { lang = localStorage.getItem('fusha-lang') || ((navigator.language || '').startsWith('ar') ? 'ar' : 'en'); } catch (e) {}
+  apply(lang);
+  document.getElementById('lang').addEventListener('click', () => { lang = lang === 'ar' ? 'en' : 'ar'; apply(lang); });
 </script>
 </body>
 </html>
