@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>FUSHA Pay · الدفع</title>
+<link rel="icon" type="image/png" sizes="64x64" href="/fusha-icon-64.png">
+<link rel="apple-touch-icon" href="/fusha-icon-180.png">
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.moyasar.com/mpf/1.19.0/moyasar.css">
+<style>
+  :root { --deep:#6B5038; --gold:#F3DDB0; --cream:#F6EFE4; --ink:#3A2816; --muted:#8C7458; --line:#E8DCC8; --green:#3E7B4F; --red:#A8432F; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--cream); color: var(--ink); font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Tahoma, Arial, sans-serif; }
+  header { background: linear-gradient(180deg, #6B5038, #4A3524); color: #fff; padding: 18px 16px 26px; border-radius: 0 0 24px 24px; text-align: center; }
+  .logo { font-family: 'Aref Ruqaa', serif; font-weight: 700; font-size: 38px; line-height: 1.2; color: #F6E7C8; }
+  .lang { position: absolute; top: 14px; inset-inline-end: 14px; background: rgba(255,255,255,.12); color: #F6E7C8; border: 1px solid rgba(255,255,255,.25); border-radius: 20px; padding: 4px 12px; font: inherit; font-size: 13px; cursor: pointer; }
+  main { max-width: 480px; margin: -14px auto 0; padding: 0 16px 40px; }
+  .card { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 18px; margin-bottom: 14px; }
+  .row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .muted { color: var(--muted); font-size: 14px; }
+  .total { font-size: 28px; font-weight: 800; color: var(--deep); }
+  .center { text-align: center; }
+  .big { font-size: 46px; line-height: 1.2; }
+  h1 { font-size: 21px; margin: 6px 0; }
+  .btn { display: block; width: 100%; text-align: center; background: var(--deep); color: #fff; border: 0; border-radius: 14px; padding: 13px; font: inherit; font-weight: 700; text-decoration: none; margin-top: 12px; cursor: pointer; }
+  .btn.light { background: #F1E7D6; color: var(--deep); }
+  .notice { border-radius: 12px; padding: 11px 13px; font-size: 14px; margin-top: 10px; }
+  .notice.red { background: #FBE9E4; color: var(--red); }
+  .notice.gold { background: #FFF5E3; color: #856137; }
+  .secure { text-align: center; font-size: 13px; color: var(--muted); }
+  .spin { width: 34px; height: 34px; border: 4px solid #EADFCB; border-top-color: var(--deep); border-radius: 50%; margin: 10px auto; animation: s 1s linear infinite; }
+  @keyframes s { to { transform: rotate(360deg); } }
+  .mysr-form { direction: ltr; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<header><button class="lang" id="lang" type="button">English</button><div class="logo" aria-label="FUSHA">فسحة</div><div id="sub" style="color:#E6D3B8;font-size:14px"></div></header>
+<main>
+  <div id="loading" class="card center"><div class="spin"></div></div>
+  <div id="pay" hidden>
+    <div class="card">
+      <div class="row"><b id="shop"></b><span class="muted" id="code" dir="ltr"></span></div>
+      <div class="row" style="margin-top:8px"><span class="muted" data-t="Total to pay|المبلغ المطلوب"></span><span class="total"><bdi id="amount" dir="ltr"></bdi> <span data-t="SAR|ر.س"></span></span></div>
+      <div id="retry" class="notice red" hidden data-t="That payment didn’t go through. Please try again or use another card.|ما تمت عملية الدفع. جرّب مرة ثانية أو استخدم بطاقة ثانية."></div>
+      <div id="test" class="notice gold" hidden data-t="Test mode — no real money is charged.|وضع تجريبي — ما يتم خصم أي مبلغ حقيقي."></div>
+    </div>
+    <div class="card"><div class="mysr-form"></div></div>
+    <p class="secure" data-t="🔒 Secure payment by Moyasar. FUSHA never sees your card details.|🔒 دفع آمن عبر ميسّر. فسحة ما تشوف بيانات بطاقتك."></p>
+  </div>
+  <div id="checking" class="card center" hidden><div class="spin"></div><h1 data-t="Confirming your payment…|نتأكد من الدفع…"></h1><p class="muted" data-t="This takes a few seconds. Please don’t close this page.|ياخذ ثواني. لا تقفل الصفحة."></p></div>
+  <div id="done" class="card center" hidden>
+    <div class="big">✅</div><h1 data-t="Payment received|تم الدفع"></h1>
+    <p class="muted"><span data-t="Your order was sent to|أرسلنا طلبك إلى"></span> <b class="shopname"></b>. <span data-t="You’ll get updates in the app.|بتوصلك التحديثات في التطبيق."></span></p>
+    <a class="btn" href="fusha://" data-t="Back to FUSHA|ارجع لفسحة"></a>
+  </div>
+  <div id="closed" class="card center" hidden>
+    <div class="big">ℹ️</div><h1 id="closedTitle"></h1>
+    <a class="btn light" href="fusha://" data-t="Back to FUSHA|ارجع لفسحة"></a>
+  </div>
+  <div id="error" class="card center" hidden><div class="big">⚠️</div><h1 id="errorText"></h1><a class="btn light" href="fusha://" data-t="Back to FUSHA|ارجع لفسحة"></a></div>
+</main>
+<script src="https://cdn.moyasar.com/mpf/1.19.0/moyasar.js"></script>
+<script>
+(() => {
+  const SB_URL = 'https://hdamabirkrctwydvmwmh.supabase.co', SB_KEY = 'sb_publishable_Qi5FgGCaExyGCwG6bfpL9A_e7oShtCe';
+  const qs = new URLSearchParams(location.search);
+  const order = qs.get('o'), token = qs.get('t'), returnedId = qs.get('id');
+  let lang = (qs.get('lang') || (navigator.language || 'ar')).startsWith('en') ? 'en' : 'ar';
+  let state = null;
+  const $ = id => document.getElementById(id);
+  const tr = s => { const [en, ar] = s.split('|'); return lang === 'en' ? en : ar; };
+  function applyLang() {
+    document.documentElement.lang = lang; document.documentElement.dir = lang === 'en' ? 'ltr' : 'rtl';
+    document.querySelectorAll('[data-t]').forEach(el => { el.textContent = tr(el.dataset.t); });
+    $('lang').textContent = lang === 'en' ? 'العربية' : 'English';
+    $('sub').textContent = tr('Secure checkout|الدفع الآمن');
+    if (state) { document.querySelectorAll('.shopname').forEach(e => e.textContent = lang === 'en' ? state.shop_en : state.shop_ar); $('shop').textContent = lang === 'en' ? state.shop_en : state.shop_ar; }
+  }
+  // Moyasar's form can't be redrawn in place, so switching language reloads the page in the other language.
+  $('lang').onclick = () => { const u = new URL(location.href); u.searchParams.delete('id'); u.searchParams.delete('status'); u.searchParams.delete('message'); u.searchParams.set('lang', lang === 'en' ? 'ar' : 'en'); location.replace(u.toString()); };
+  const show = id => ['loading', 'pay', 'checking', 'done', 'closed', 'error'].forEach(x => $(x).hidden = x !== id);
+  const rpc = async (fn, args) => {
+    const r = await fetch(`${SB_URL}/rest/v1/rpc/${fn}`, { method: 'POST', headers: { apikey: SB_KEY, 'Content-Type': 'application/json' }, body: JSON.stringify(args || {}) });
+    const body = await r.json().catch(() => null);
+    if (!r.ok) throw new Error((body && body.message) || 'ERROR');
+    return body;
+  };
+  const fail = (en, ar) => { $('errorText').textContent = lang === 'en' ? en : ar; show('error'); };
+  let config = null;
+
+  function render(s, triedPayment) {
+    state = s; applyLang();
+    if (s.payment_status === 'paid') { show('done'); return; }
+    if (s.status === 'awaiting_payment' && s.checking) { show('checking'); return 'wait'; }
+    if (s.status === 'awaiting_payment') {
+      $('code').textContent = '#' + s.code;
+      $('amount').textContent = Number(s.total_sar).toFixed(2);
+      $('retry').hidden = !triedPayment;
+      show('pay'); mountForm(); return;
+    }
+    $('closedTitle').textContent = s.status === 'cancelled' ? tr('This order was cancelled. Nothing more to pay.|تم إلغاء هذا الطلب. ما عليك دفع شيء.') : tr('Nothing to pay for this order.|ما عليك دفع شيء لهذا الطلب.');
+    show('closed');
+  }
+
+  function mountForm() {
+    const box = document.querySelector('.mysr-form'); box.innerHTML = '';
+    const methods = ['creditcard']; if (config.apple_pay) methods.push('applepay');
+    $('test').hidden = !String(config.publishable_key).startsWith('pk_test_');
+    Moyasar.init({
+      element: '.mysr-form', language: lang,
+      amount: state.amount, currency: 'SAR',
+      description: `FUSHA order #${state.code}`,
+      publishable_api_key: config.publishable_key,
+      callback_url: `${location.origin}${location.pathname}?o=${encodeURIComponent(order)}&t=${encodeURIComponent(token)}&lang=${lang}`,
+      methods, supported_networks: ['mada', 'visa', 'mastercard'],
+      metadata: { order_id: order, order_code: state.code },
+      apple_pay: { country: 'SA', label: 'FUSHA', validate_merchant_url: 'https://api.moyasar.com/v1/applepay/initiate' },
+      // Save the payment id before 3-D Secure, so the order can be confirmed even if this page is closed.
+      on_completed: async payment => { await rpc('attach_card_payment', { p_order: order, p_token: token, p_payment_id: payment.id }); },
+    });
+  }
+
+  async function poll(tried) {
+    for (let i = 0; i < 40; i++) {
+      const s = await rpc('card_payment_status', { p_order: order, p_token: token });
+      if (render(s, tried) !== 'wait') return;
+      await new Promise(r => setTimeout(r, i < 10 ? 1500 : 3000));
+    }
+    fail('Still confirming your payment. Check your order in the FUSHA app in a few minutes.', 'ما زلنا نتأكد من الدفع. افتح طلبك في تطبيق فسحة بعد دقائق.');
+  }
+
+  async function start() {
+    applyLang();
+    if (!order || !token) return fail('This payment link is not complete. Open your order in the FUSHA app and tap Pay.', 'رابط الدفع ناقص. افتح طلبك في تطبيق فسحة واضغط ادفع.');
+    try {
+      config = await rpc('card_payments_config');
+      if (returnedId && /^[0-9a-fA-F-]{36}$/.test(returnedId)) {
+        show('checking');
+        const s = await rpc('attach_card_payment', { p_order: order, p_token: token, p_payment_id: returnedId });
+        if (render(s, true) === 'wait') await poll(true);
+        return;
+      }
+      if (!config.enabled) return fail('Card payment isn’t available right now.', 'الدفع بالبطاقة غير متاح حالياً.');
+      await poll(false);
+    } catch (e) {
+      if (/NOT_FOUND/.test(e.message)) fail('We couldn’t find this order. Open it in the FUSHA app and tap Pay.', 'ما لقينا هذا الطلب. افتحه في تطبيق فسحة واضغط ادفع.');
+      else fail('Something went wrong. Please try again.', 'صار خطأ. حاول مرة ثانية.');
+    }
+  }
+  start();
+})();
+</script>
+</body>
+</html>
